@@ -30,9 +30,19 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
+      - name: Build with Maven
+        run: mvn clean install
+      - name: Install SonarQube Scanner
+        run: |
+          curl -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip -o sonar-scanner.zip
+          unzip sonar-scanner.zip
+          rm sonar-scanner.zip
+          mv sonar-scanner-* sonar-scanner
+          sudo mv sonar-scanner /opt/
+          sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
+      - name: Run SonarQube analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=testsonar -Dsonar.projectName='testsonar'
+        run: sonar-scanner -Dsonar.projectKey=testsonar -Dsonar.projectName='testsonar' -Dsonar.sources='src/main' -Dsonar.language='java' -Dsonar.java.binaries='target/classes' -Dsonar.java.test.binaries='target/test-classes'
