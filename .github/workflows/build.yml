@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - regress
   pull_request:
     types: [opened, reopened, synchronize]
 
