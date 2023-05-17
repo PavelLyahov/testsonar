@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -21,7 +22,7 @@ public class CorrectDate {
     }
 
     private static List<String> correctTimeList(List<String> time) {
-        return time.stream().filter(CorrectDate::isDateValid).toList();
+        return time.stream().filter(CorrectDate::isDateValid).collect(Collectors.toList());
     }
 
     private static boolean isDateValid(String dateStr) {

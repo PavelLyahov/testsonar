@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ValidTime {
     /**
@@ -15,7 +16,7 @@ public class ValidTime {
     }
 
     private static List<String> correctTimeList(List<String> time) {
-        return time.stream().filter(ValidTime::checkIsTimeCorrect).toList();
+        return time.stream().filter(ValidTime::checkIsTimeCorrect).collect(Collectors.toList());
     }
 
 //    private static boolean checkIsTimeCorrect(String time) {

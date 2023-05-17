@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> list = Stream.of("Minsk", "Moscow", "Madrid", "Milan", "Rio", "Gomel").toList();
+        List<String> list = Stream.of("Minsk", "Moscow", "Madrid", "Milan", "Rio", "Gomel").collect(Collectors.toList());
         List<String> strings = new ArrayList(list);
         List<String> sorted = strings.stream()
                 .filter(city -> city.length() % 2 != 0)
                 .filter(city -> city.matches("^[Mm]"))
-                .toList();
+                .collect(Collectors.toList());
 
 
 

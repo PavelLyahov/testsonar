@@ -30,7 +30,7 @@ public class Main {
         System.out.println(mas.size());
         mas.forEach(System.out::println);
 
-        List<String> mmas = mas.stream().filter(el -> !el.isEmpty()).toList();
+        List<String> mmas = mas.stream().filter(el -> !el.isEmpty()).collect(Collectors.toList());
         System.out.println(mmas.size());
         mmas.forEach(System.out::println);
 
