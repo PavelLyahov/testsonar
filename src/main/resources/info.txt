@@ -1,0 +1,6 @@
+sonar.name=testsonar
+sonar.key=testsonar
+pr tok = sqp_254c18efcc661f79f82dacc1e15899b28311fd1a
+url=http://54.93.114.12:9000
+
+sqp_58dc1620a5720e67e1fcb8cb731955737e83645b
