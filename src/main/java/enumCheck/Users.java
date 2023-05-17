@@ -13,7 +13,7 @@ public enum Users implements Action{
 
     @Override
     public void move() {
-        System.out.println("%s moves".formatted(this.name));
+        System.out.println("%s moves");
     }
 
     @Override
