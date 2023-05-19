@@ -24,6 +24,7 @@ public class CatFightsConsole {
                 cat.getThread().join();
             }catch (InterruptedException e){
                 e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println(String.format("Кот-победитель: %s!!!", Cat.cats.get(0)));

@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 class Cat implements Runnable{
+    private Random random = new Random();
 
     public static final List<Cat> cats = new CopyOnWriteArrayList<>();// Статический контейнер всех созданных «кототредов»
     private String name;
@@ -40,7 +41,7 @@ class Cat implements Runnable{
 
     @Override
     public void run() {
-        System.out.println(String.format("Кот %s идёт в бой.", name));
+        System.out.printf("Кот %s идёт в бой.%n", name);
 
         while (Cat.cats.size() > 1){
             Cat.attack(this, getRandomEnemyCat(this));
@@ -50,7 +51,7 @@ class Cat implements Runnable{
     private Cat getRandomEnemyCat(Cat deleteThisCat) {
         List<Cat> copyCats = new ArrayList<>(Cat.cats);
         copyCats.remove(deleteThisCat);
-        return copyCats.get(new Random().nextInt(copyCats.size()));
+        return copyCats.get(random.nextInt(copyCats.size()));
     }
 
     public synchronized void decrementLife() { life--; }
