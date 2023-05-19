@@ -16,6 +16,13 @@ public class SonarQubeDemo {
             System.out.println("Number: " + numbers.get(i));
         }
 
+        String message = "Hello, world!";
+        if (message.equals("Hello, world!")) {
+            System.out.println("The message is correct.");
+        } else {
+            System.out.println("The message is incorrect.");
+        }
+
     }
 }
 
