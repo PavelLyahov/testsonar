@@ -22,6 +22,7 @@ public class SonarQubeDemo {
         } else {
             System.out.println("The message is incorrect.");
         }
+
     }
 }
 
